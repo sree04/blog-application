@@ -22,7 +22,7 @@ pipeline {
             steps {
                 dir('frontend'){
                 sh "npm install"
-                sh 'docker build -t frontend!image .'
+                sh 'docker build -t frontend--image .'
             }
             }
         }
@@ -30,17 +30,17 @@ pipeline {
             steps {
                 dir('backend'){
                 sh "npm install"
-                sh 'docker build -t backend!image .'
+                sh 'docker build -t backend--image .'
             }}
         }
         stage('Stage 4: Push image to DockerHub') {
             steps {
                 script {
                         sh "docker login --username sreeparna04 --password snowy6721"
-                        sh 'docker tag frontend!image sreeparna04/frontend-image:latest'
+                        sh 'docker tag frontend--image sreeparna04/frontend-image:latest'
                         sh 'docker push  sreeparna04/frontend-image:latest'
-                        sh "docker tag backend!image sreeparna04/backend-image:latest"
-                        sh "docker push bean6792/backend-image:latest"
+                        sh "docker tag backend--image sreeparna04/backend-image:latest"
+                        sh "docker push sreeparna04/backend-image:latest"
                     
                 }
             }
