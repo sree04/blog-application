@@ -18,7 +18,7 @@ pipeline {
                 sh 'npm config rm https-proxy'
             }
         }
-        stage('Stage 2: Frontend  Build') {
+        stage('Stage 3: Frontend  Build') {
             steps {
                 dir('frontend'){
                 sh "npm install"
@@ -26,14 +26,14 @@ pipeline {
             }
             }
         }
-        stage("Stage 3: Backend  Build") {
+        stage("Stage 4: Backend  Build") {
             steps {
                 dir('backend'){
                 sh "npm install"
                 sh 'docker build -t backend--image .'
             }}
         }
-        stage('Stage 4: Push image to DockerHub') {
+        stage('Stage 5: Push image to DockerHub') {
             steps {
                 script {
                         sh "docker login --username sreeparna04 --password snowy6721"
@@ -45,7 +45,7 @@ pipeline {
                 }
             }
         }
-        stage('Stage 5: Clean Docker Images') {
+        stage('Stage 6: Clean Docker Images') {
             steps {
                 script {
                     sh 'docker container prune -f'
@@ -53,7 +53,7 @@ pipeline {
                 }
             }
         }
-        stage('Stage 6: Ansible Deployment') {
+        stage('Stage 7: Ansible Deployment') {
             steps {
                 script { 
                     sh 'ansible-playbook -i inventory.ini  playbook.yml'
