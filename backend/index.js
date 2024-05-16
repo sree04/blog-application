@@ -11,10 +11,7 @@ const cors = require('cors');
 // Database connection
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb+srv://sreeparna0410:sreeparnadev@cluster0.anx47aq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-          });
+        await mongoose.connect("mongodb+srv://sreeparna0410:sreeparnadev@cluster0.anx47aq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         console.log("Database connected successfully")
     } catch (err) {
         console.error(err);
@@ -42,14 +39,13 @@ app.use("/api/posts", postRoute);
 // // app.post("/api/upload", upload.single("file"), (req, res) => {
 //     res.status(200).json("Image uploaded successfully");
 // });
-if (process.env.NODE_ENV !== 'test') {
-    connectDB();
+
 // Start the server
 const PORT = process.env.PORT || 3400;
 app.listen(PORT, () => {
     connectDB();
     console.log("App is running on port " + PORT);
 });
-}
+
 module.exports = app; // Exporting the app object
 

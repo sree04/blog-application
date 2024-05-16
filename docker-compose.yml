@@ -1,4 +1,5 @@
-version: '3.8'
+metadata:
+  version: '3.8'
 
 services:
   # Frontend service
@@ -18,4 +19,3 @@ services:
       - "3400:3400"
     environment:
       - MONGODB_URI=mongodb+srv://sreeparna0410:sreeparnadev@cluster0.anx47aq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
