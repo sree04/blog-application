@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Frontend service
   frontend:
-    image: sreeparna04/my_frontend
+    image: sreeparna04/frontend-image
     container_name: frontend
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
 
   # Backend service
   backend:
-    image: sreeparna04/my_backend
+    image: sreeparna04/backend-image
     container_name: backend
     restart: always
     ports:
