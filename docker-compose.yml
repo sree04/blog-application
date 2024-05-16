@@ -3,19 +3,19 @@ version: '3.8'
 services:
   # Frontend service
   frontend:
-    image: sreeparna04/frontend:v1.0
+    image: sreeparna04/my_frontend
     container_name: frontend
     restart: always
     ports:
-      - "3000:3000"
+      - "3002:3002"
 
   # Backend service
   backend:
-    image: sreeparna04/backend:v1.0
+    image: sreeparna04/my_backend
     container_name: backend
     restart: always
     ports:
-      - "3200:3200"
+      - "3400:3400"
     environment:
       - MONGODB_URI=mongodb+srv://sreeparna0410:sreeparnadev@cluster0.anx47aq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
