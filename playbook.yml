@@ -1,40 +1,14 @@
-
 ---
 - name: Deploy MERN Application
-  hosts: localhost
+  hosts: all
   vars:
     ansible_python_interpreter: /usr/bin/python3
 
   tasks:
-    - name: Ensure Docker is installed
-      become: yes
-      apt:
-        name: docker.io
-        state: present
-        update_cache: yes
-
-    - name: Ensure Docker Compose is installed
-      become: yes
-      apt:
-        name: docker-compose
-        state: present
-        update_cache: yes
-
     - name: Copy Docker Compose file
       copy:
         src: docker-compose.yml
-        dest: /home/sree/docker-compose.yml
-      become: yes
-
-    - name: Bring down any existing Docker Compose setup
-      command: docker-compose down
-      args:
-        chdir: /home/sree
-      ignore_errors: yes
-      become: yes
+        dest: "docker-compose.yml"
 
     - name: Run Docker Compose
       command: docker-compose up -d
-      args:
-        chdir: /home/sree
-      become: yes
